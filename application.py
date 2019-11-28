@@ -1,13 +1,11 @@
 import requests
 import json
 from flask import Flask, render_template, jsonify, request
-from flask_heroku import Heroku
 from models import *
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL")
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-heroku = Heroku(app)
 db.init_app(app)
 
 @app.route("/")
@@ -93,3 +91,6 @@ def note():
 with app.app_context():
     app.debug = True
     db.create_all()
+
+if __name__ == '__main__':
+    app.run()
