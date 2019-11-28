@@ -16,6 +16,8 @@ def index():
     "id": "2",
     "text": "Test 2"
     }
+    print(json.dumps(['foo', {'bar': ('baz', None, 1.0, 2)}]))
+
     notes = [note_dict_object_1, note_dict_object_2]
     return render_template("index.html", notes = notes)
 
