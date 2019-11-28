@@ -22,7 +22,7 @@ def index():
     return render_template("index.html", notes = notes)
 
 @app.route("/david")
-def create_note():
+def david():
     return "Hello, David!"
 
 
