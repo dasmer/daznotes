@@ -88,9 +88,9 @@ def note():
     db.session.commit()
     return index()
 
-with app.app_context():
-    app.debug = True
-    db.create_all()
-
-if __name__ == '__main__':
-    app.run()
+# with app.app_context():
+#     app.debug = True
+#     db.create_all()
+#
+# if __name__ == '__main__':
+#     app.run()
