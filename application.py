@@ -10,8 +10,8 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    response = requests.get(f'{request.url_root}api/notes')
-    notes = response.json()
+    # response = requests.get(f'{request.url_root}api/notes')
+    # notes = response.json()
     return "Hello World!"
 
 
