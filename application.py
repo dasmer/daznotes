@@ -7,10 +7,20 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return "Hello, world!"
+    # response = requests.get(f'{request.url_root}api/notes')
+    note_dict_object_1 = {
+    "id": "1",
+    "text": "Test 1"
+    }
+    note_dict_object_2 = {
+    "id": "2",
+    "text": "Test 2"
+    }
+    notes = [note_dict_object_1, note_dict_object_2]
+    return render_template("index.html", notes = notes)
 
 @app.route("/david")
-def david():
+def create_note():
     return "Hello, David!"
 
 
