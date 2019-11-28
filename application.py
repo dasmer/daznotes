@@ -4,15 +4,15 @@ from flask import Flask, render_template, jsonify, request
 from models import *
 
 app = Flask(__name__)
-# app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL")
-# app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-# db.init_app(app)
+app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL")
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+db.init_app(app)
 
 @app.route("/")
 def index():
-    # response = requests.get(f'{request.url_root}api/notes')
-    # notes = response.json()
-    return "Hello World!"
+    response = requests.get(f'{request.url_root}api/notes')
+    notes = response.json()
+    return render_template("index.html", notes = notes)
 
 
 @app.route("/notes/<int:id>")
@@ -88,9 +88,9 @@ def note():
     db.session.commit()
     return index()
 
-# with app.app_context():
-#     app.debug = True
-#     db.create_all()
-#
-# if __name__ == '__main__':
-#     app.run()
+with app.app_context():
+    app.debug = True
+    db.create_all()
+
+if __name__ == '__main__':
+    app.run()
