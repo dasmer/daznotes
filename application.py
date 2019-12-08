@@ -13,7 +13,7 @@ def index():
     # response = requests.get(f'{request.url_root}api/notes')
     # print(f'BEGIN{response}END')
     # notes = response.json()
-    return render_template("index.html", notes = []])
+    return render_template("index.html", notes = [])
 
 
 @app.route("/notes/<int:id>")
