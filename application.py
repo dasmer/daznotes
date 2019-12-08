@@ -1,6 +1,6 @@
 import requests
 import json
-from flask import Flask, render_template, jsonify, request
+from flask import Flask, render_template, jsonify, request, Response
 from models import *
 
 app = Flask(__name__)
@@ -12,7 +12,7 @@ db.init_app(app)
 def index():
     print('Begin INDEX')
     response = requests.get(f'{request.url_root}api/notes')
-    print('END INDEX')
+    print('End INDEX')
     notes = response.json()
     return render_template("index.html", notes = notes)
 
@@ -90,7 +90,7 @@ def note():
     print("Before Commit")
     db.session.commit()
     print("After Commit")
-    return index()
+    return Response(status=200)
 
 with app.app_context():
     app.debug = True
