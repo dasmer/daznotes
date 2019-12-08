@@ -85,7 +85,9 @@ def note():
         note = Note.query.get(id)
         note.text = note_text
 
+    print("Before Commit")
     db.session.commit()
+    print("After Commit")
     return index()
 
 with app.app_context():
